@@ -1,63 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="../Ext.css">
+        <script src="../html2pdf.bundle.min.js"></script>
+        <script>
+            function generatePDF() {
+                const element = document.getElementById('invoice');
+                html2pdf().from(element).save();
+            }
+        </script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Nom agence - Nom bien</title>
+        <title>Gilbert Immo </title>
     </head>
-    <body>
-        <div id = "wrapper">
-            <header>
-                <img src=""><!--Logo agence-->
-                <h2>Terrain 1</h2>
-            </header>
-            <nav>
-                <div id="wrap">
-                    <ul class="navbar">
-                        <li>
-                            <a href="../index.html">Accueil</a>
-                        </li>
-                        <li>
-                            <a href="../contact.html">Contact</a>
-                        </li>
-                        <li>
-                            <a href="../menus/menu_apparts.html">Appartements</a>
-                        </li>
-                        <li>
-                            <a href="../menus/menu_immeubles.html">Immeubles</a>
-                        </li>
-                        <li>
-                            <a href="../menus/menu_locaux.html">Locaux </a>
-                        </li>
-                        <li>
-                            <a href="../menus/menu_maisons.html">Maisons</a>
-                        </li>
-                        <li>
-                            <a href="../menus/menu_terrains.html">Terrains</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-            <section>
-                <div class="t8"></div>
-                <article>
-                    <h3>Caractéristiques du bien</h3>
-                    <p> Dans une copropriété récente de standing avec gardien, Century 21 Joffrin vous présente ce bel appartement avec ascenseur, donnant sur une belle terrasse et un jardin.</p>
-                    <h4>Nombre de pièces :</h4>
-                    <p>31,42m²</p>
-                    <h4>Prix :</h4>
-                    <p>335 000 €</p>
-                </article>
-            </section>
-            <aside>
 
-            </aside>
-            <footer>
-                <a href="../contact.html">Page de contact</a>
-                <p>Numéro de contact :</p>
-                <p>Adresse de l'agence :</p>
-            </footer>
-        </div>
-    </body>
+    <div id = wrapper>
+        <header>
+            <h1> Gilbert Immo </h1>
+            <h2>Bienvenue à l'Agence de Gilbert Immo !</h2>
+
+        </header>
+        <nav>
+            <div id="wrap">
+                <ul class="navbar">
+                    <li>
+                        <a href="../index.html">Accueil</a>
+                    </li>
+                    <li>
+                        <a href="../contact.html">Contact</a>
+                    </li>
+                    <li>
+                        <a href="../menus/menu_apparts.html">Appartements</a>
+                    </li>
+                    <li>
+                        <a href="../menus/menu_immeubles.html">Immeubles</a>
+                    </li>
+                    <li>
+                        <a href="../menus/menu_locaux.html">Locaux </a>
+                    </li>
+                    <li>
+                        <a href="../menus/menu_maisons.html">Maisons</a>
+                    </li>
+                    <li>
+                        <a href="../menus/menu_terrains.html">Terrains</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="t8"></div>
+        <article>
+            <h3>Caractéristiques du bien</h3>
+            <p> </p>
+            <h4>Nombre de pièces :</h4>
+            <p></p>
+            <h4>Superficie :</h4>
+            <p></p>
+            <h4>Prix :</h4>
+            <p></p>
+            <button onclick="generatePDF()">Download as PDF</button>
+        </article>
+    </div>
+</body>
 </html>
