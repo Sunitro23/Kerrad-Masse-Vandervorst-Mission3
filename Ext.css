@@ -38,11 +38,12 @@ p, h2, h3, h4{
     margin: 0;
     z-index: 99; 
     position: relative; 
-    background-color: #444444;
+    border-radius: 10px;
 }
 .navbar{
     padding: 0;
     margin: 0;
+    border-radius: 10px ;
 }
 .navbar li{
     height: auto;
@@ -52,6 +53,7 @@ p, h2, h3, h4{
     list-style: none;  
     font: normal bold 13px/1em Arial;
     background-color: #444444;
+    border-radius: 10px ;
 }
 .navbar a{                            
     padding: 18px 0;  
@@ -59,23 +61,27 @@ p, h2, h3, h4{
     text-decoration: none; 
     color: white; 
     display: block;
+    border-radius: 10px ;
 }
 
 .navbar li ul{
-    background-color: #444444;
+    background-color: #999999;
     border: 1px solid; 
     display: none;
     height: auto;
     padding: 0;
 	position:absolute;
+    border-radius: 10px ;
 }
 
 .navbar li:hover ul{
     display: block;
+    border-radius: 10px ;
 }
 .navbar li ul li a{
-    background-color: #444444;
-    border: 1px solid #444444;
+    background-color: #999999;
+    border: 1px solid #999999;
+    border-radius: 10px ;
 }
 .a1{
     width: 350px;
@@ -973,4 +979,17 @@ p, h2, h3, h4{
     100%{
         background-image: url("Image/images/terrains/terrain9/img1.jpeg");
     }
+}
+
+iframe{
+    border-radius: 10px ;
+}
+
+article{
+    text-align: center;
+}
+
+article > img {
+    height: 150px;
+    width:3 00px;
 }
