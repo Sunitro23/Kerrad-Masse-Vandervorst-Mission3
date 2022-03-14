@@ -1,22 +1,20 @@
 <?php
-
 $username = $_POST['username'];
 $password = $_POST['password'];
 
 include 'connexionbdd.php';
 
-$query = $connect->prepare('SELECT * FROM user WHERE username="'.$username.'" and password="'. hash(sha256, $password).'"');
-$bind1 = $inserer->bindValue(':username', $username, PDO::PARAM_STR);
-$bind2 = $inserer->bindValue(':password', $password, PDO::PARAM_STR);
-$nbcolumns = $query->columnCount();
+$query = $connect->prepare('SELECT * FROM user');
 $query->execute();
-$nbcolumns = $query->columnCount();
+$resultats = $query->fetchAll();
 
-if($nbcolumns==1){
-    session_start();
-    $_SESSION["newsession"]=$username;
-    header("index.php");
-}
-else{
-    echo '<h2>Erreur</h2>';
+foreach ($resultats as $resultat) {
+    if ($resultat['username'] == $username && $resultat['password'] == $password) {
+        session_start();
+        unset($_SESSION['session']);
+        $_SESSION["session"] = $username;
+        echo '<meta http-equiv="refresh" content="1; url=index.php"/>';
+    } else {
+        echo '<h1>Erreur</h1>';
+    }
 }
