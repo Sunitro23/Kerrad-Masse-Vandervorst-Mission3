@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Lun 14 Mars 2022 à 15:12
+-- Généré le :  Lun 14 Mars 2022 à 16:11
 -- Version du serveur :  5.7.11
 -- Version de PHP :  7.2.7
 
@@ -52,7 +52,43 @@ INSERT INTO `bien` (`ID`, `IDTYPE`, `JARDIN`, `PRIX`, `RUE`, `VILLE`, `NBPIECES`
 (6, 1, 0, 220000, 'Rue de la Gare', 'Lille', 3, 0, 0, 69),
 (7, 1, 0, 230000, 'Rue Faidherbe', 'Croix', 4, 0, 0, 60),
 (8, 1, 0, 600000, 'Rue Victoire', 'Croix', 7, 0, 0, 124),
-(9, 1, 0, 90000, 'Rue de Tourcoing', 'Roubaix', 2, 0, 0, 26);
+(9, 1, 0, 90000, 'Rue de Tourcoing', 'Roubaix', 2, 0, 0, 26),
+(10, 2, 0, 800000, 'Rue des Prés', 'Hem', 0, 5, 10, 400),
+(11, 2, 0, 950000, 'Rue des Trois Fermes', 'Hem', 0, 5, 12, 424),
+(12, 2, 0, 1200000, 'Rue du blé', '.Roubaix', 0, 3, 6, 200),
+(13, 2, 0, 600000, 'Rue des Vaches', 'Roubaix', 0, 2, 4, 240),
+(14, 2, 0, 400000, 'Rue des Fleurs', 'Croix', 0, 2, 3, 140),
+(15, 2, 0, 750000, 'Rue des Ecoles', 'Wasquehal', 0, 4, 5, 225),
+(16, 2, 1, 2000000, 'Rue Victoire', 'Croix', 0, 3, 3, 550),
+(17, 2, 0, 300000, 'Rue Edouard Vaillant', 'Mouveaux', 0, 1, 2, 130),
+(18, 2, 0, 340000, 'Rue Boileau', 'Roubaix', 0, 3, 6, 200),
+(19, 3, 0, 130000, 'Rue des Fraisiers', 'Loos', 3, 0, 0, 40),
+(20, 3, 0, 117000, 'Rue des Peupliers', 'Tourcoing', 2, 0, 0, 34),
+(21, 3, 0, 200000, 'Rue de Paris', 'Lesquin', 3, 0, 0, 68),
+(22, 3, 0, 650000, 'Rue Victoire', 'Croix', 6, 1, 0, 110),
+(23, 3, 0, 90000, 'Rue Boileau', 'Roubaix', 1, 0, 0, 24),
+(24, 3, 0, 150000, 'Rue Verte', 'Croix', 3, 0, 0, 63),
+(25, 3, 0, 190000, 'Rue des Ecoles', 'Hem', 3, 0, 0, 49),
+(26, 3, 0, 210000, 'Rue de Tourcoing', 'Tourcoing', 3, 0, 0, 59),
+(27, 3, 0, 310000, 'Rue des Fleurs', 'Croix', 4, 0, 0, 89),
+(30, 4, 1, 200000, 'Rue Moliere', 'Hem', 7, 1, 0, 200),
+(31, 4, 0, 130000, 'Rue Boileau', 'Roubaix', 5, 1, 0, 100),
+(32, 4, 1, 220000, 'Rue Racine', 'Hem', 7, 1, 0, 220),
+(33, 4, 1, 330000, 'Rue Foret', 'Leers', 9, 2, 0, 300),
+(34, 4, 0, 220000, 'Rue des Lievres', 'Lys les Lannoy', 7, 2, 0, 200),
+(35, 4, 0, 160000, 'Rue de la Fontaine', 'Leers', 6, 1, 0, 120),
+(36, 4, 1, 900000, 'Rue Victoire', 'Croix', 14, 3, 0, 400),
+(37, 4, 1, 350000, 'Rue Verte', 'Croix', 10, 2, 0, 240),
+(38, 4, 1, 270000, 'Rue Bleu', 'Roubaix', 8, 1, 0, 220),
+(39, 5, 0, 500000, 'Rue des Champs', 'Hem', 0, 0, 0, 450),
+(40, 5, 0, 240000, 'Rue Cadenas', 'Lille', 0, 0, 0, 100),
+(41, 5, 0, 2000000, 'Rue Victoire', 'Croix', 0, 0, 0, 400),
+(42, 5, 0, 600000, 'Rue Bassin', 'Tourcoing', 0, 0, 0, 350),
+(43, 5, 0, 1500000, 'Rue des Ecoles', 'Hem', 0, 0, 0, 1200),
+(44, 5, 0, 190000, 'Rue des Fleurs', 'Croix', 0, 0, 0, 340),
+(45, 5, 0, 90000, 'Rue Boileau', 'Roubaix', 0, 0, 0, 75),
+(46, 5, 0, 170000, 'Rue Bleu', 'Roubaix', 0, 0, 0, 120),
+(47, 5, 0, 500000, 'Rue des Souris', 'Wattrelos', 0, 0, 0, 356);
 
 -- --------------------------------------------------------
 
@@ -144,7 +180,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `bien`
 --
 ALTER TABLE `bien`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 --
 -- AUTO_INCREMENT pour la table `type`
 --
