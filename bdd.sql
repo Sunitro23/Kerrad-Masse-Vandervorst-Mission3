@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 21 mars 2022 à 15:06
+-- Généré le :  lun. 21 mars 2022 à 15:52
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -38,9 +38,9 @@ CREATE TABLE IF NOT EXISTS `bien` (
   `prix` int(8) NOT NULL,
   `rue` varchar(50) NOT NULL,
   `ville` varchar(30) NOT NULL,
-  `nbpieces` int(2) NOT NULL,
-  `nbetages` int(2) NOT NULL,
-  `nbappartements` int(3) NOT NULL,
+  `nbpieces` int(2) DEFAULT NULL,
+  `nbetages` int(2) DEFAULT NULL,
+  `nbappartements` int(3) DEFAULT NULL,
   `superficie` int(5) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDTYPE` (`idtype`)
