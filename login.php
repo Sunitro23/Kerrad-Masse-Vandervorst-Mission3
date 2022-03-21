@@ -11,8 +11,8 @@ $resultats = $query->fetchAll();
 foreach ($resultats as $resultat) {
     if ($resultat['username'] == $username && $resultat['password'] == $password) {
         session_start();
-        unset($_SESSION['session']);
-        $_SESSION["session"] = $username;
+        $_SESSION['username'] = $username;
+        $id_session= session_id();
         echo '<meta http-equiv="refresh" content="1; url=index.php"/>';
     } else {
         echo '<h1>Erreur</h1>';
