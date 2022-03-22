@@ -10,6 +10,12 @@ $nbetages = $_POST['nbetages'];
 $nbappartements = $_POST['nbappartements'];
 $superficie = $_POST['superficie'];
 
+if ($jardin == "jardin") {
+    $jardin = 1;
+} else {
+    $jardin = 0;
+}
+
 try {
     $connect = new PDO('mysql:host=localhost;dbname=bdd;charset=utf8', 'root', '');
 } catch (Exception $ex) {
@@ -17,7 +23,7 @@ try {
 }
 $inserer = $connect->prepare('INSERT INTO bien(idtype, jardin, prix, rue, ville, nbpieces, nbetages, nbappartements, superficie)VALUES(:idType,:jardin,:prix,:rue,:ville,:nbpieces,:nbetages,:nbappartements,:superficie)');
 $bind1 = $inserer->bindValue(':idType', $idType, PDO::PARAM_INT);
-$bind2 = $inserer->bindValue(':jardin', $jardin, PDO::PARAM_BOOL);
+$bind2 = $inserer->bindValue(':jardin', $jardin, PDO::PARAM_INT);
 $bind3 = $inserer->bindValue(':prix', $prix, PDO::PARAM_INT);
 $bind4 = $inserer->bindValue(':rue', $rue, PDO::PARAM_STR);
 $bind5 = $inserer->bindValue(':ville', $ville, PDO::PARAM_STR);
@@ -27,9 +33,8 @@ $bind8 = $inserer->bindValue(':nbappartements', $nbappartements, PDO::PARAM_INT)
 $bind9 = $inserer->bindValue(':superficie', $superficie, PDO::PARAM_INT);
 $execute = $inserer->execute();
 
-if($execute){
-    echo "<h2>La page à été créée</h2>";
-}
-else{
+if ($execute) {
+    echo "<h2>La page a ete creee</h2>";
+} else {
     echo "<h2>Erreur</h2>";
 }
