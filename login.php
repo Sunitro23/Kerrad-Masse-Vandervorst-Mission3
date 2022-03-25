@@ -9,7 +9,7 @@ $query->execute();
 $resultats = $query->fetchAll();
 
 foreach ($resultats as $resultat) {
-    if ($resultat['username'] == $username && $resultat['password'] == $password) {
+    if ($resultat['username'] == $username && password_verify($password,$resultat['password'])){
         session_start();
         $_SESSION['username'] = $username;
         $id_session= session_id();
