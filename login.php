@@ -15,6 +15,6 @@ foreach ($resultats as $resultat) {
         $id_session= session_id();
         echo '<meta http-equiv="refresh" content="1; url=index.php"/>';
     } else {
-        echo '<h1>Erreur</h1>';
+        echo '<h1>Erreur de connexion</h1>';
     }
 }
