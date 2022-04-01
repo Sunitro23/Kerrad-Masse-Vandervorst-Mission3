@@ -3,31 +3,31 @@
 
 function getTri($pdo, $type, $ville) {
     //Verif si type/ville doit être trié ou pas
-    if ($type != 0 && $ville != '0') {
+    if ($type != 0 && $ville != strval(0)) {
         
-        $query = $pdo->prepare('SELECT * FROM bien WHERE idtype = :type AND ville= :ville');
+        $query = $pdo->prepare('SELECT * FROM image JOIN bien ON bien.id = image.idbien WHERE idtype = :type AND ville= :ville');
         $bind1 = $query->bindValue(':type', $type, PDO::PARAM_STR);
         $bind2 = $query->bindValue(':ville', $ville, PDO::PARAM_STR);
         
     } elseif ($type != 0) {
         
-        $query = $pdo->prepare('SELECT * FROM bien WHERE idtype = :type');
+        $query = $pdo->prepare('SELECT * FROM image JOIN bien ON bien.id = image.idbien WHERE idtype = :type');
         $bind1 = $query->bindValue(':type', $type, PDO::PARAM_STR);
         
-    } elseif ($ville != '0') {
+    } elseif ($ville !=  strval(0)) {
         
-        $query = $pdo->prepare('SELECT * FROM bien WHERE ville= :ville');
+        $query = $pdo->prepare('SELECT * FROM image JOIN bien ON bien.id = image.idbien WHERE ville= :ville');
         $bind2 = $query->bindValue(':ville', $ville, PDO::PARAM_STR);
         
     } else {
         
-        $query = $pdo->prepare('SELECT * FROM bien');
+        $query = $pdo->prepare('SELECT * FROM image JOIN bien ON bien.id = image.idbien');
     }
     
     //Execution
     $query->execute();
-    $LesLocaux = $query->fetchAll();
-    return $LesLocaux;
+    $LesBiens = $query->fetchAll();
+    return $LesBiens;
 }
 
 function getSelectType($pdo) {
@@ -55,3 +55,4 @@ function getSelectVille($pdo) {
     }
     echo '</select>';
 }
+

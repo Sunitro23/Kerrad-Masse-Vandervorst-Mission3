@@ -509,3 +509,19 @@ pre code {
   margin: 0;
   padding: 0;
 }
+
+.cadre{
+    border-width: 20px;
+    border-style: inset;
+    height: 300px;
+    width: 650px;
+    display: flex;
+    flex-direction: row;
+    border-color: #74cdd1;
+}
+
+.prop-bien{
+    font-family: sans-serif;
+    display: inline-block;
+
+}
