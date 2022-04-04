@@ -14,8 +14,8 @@ $pdo = connect();
     <input type="submit"></form>
 <?php
 if (isset($_POST['typeSelect'])) {
-    $type = $_POST['Type'];
-    $ville = $_POST['Ville'];
+    $type = $_POST['typeSelect'];
+    $ville = $_POST['villeSelect'];
     $lesBiens = getTri($pdo, $type, $ville);
     foreach ($lesBiens as $unBien) {
         echo '<div class="cadre">
