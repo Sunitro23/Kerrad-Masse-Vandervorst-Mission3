@@ -3,7 +3,7 @@ $username = $_POST['username'];
 $password = $_POST['password'];
 
 include 'connexionbdd.php';
-
+$connect=connect();
 $query = $connect->prepare('SELECT * FROM user');
 $query->execute();
 $resultats = $query->fetchAll();
