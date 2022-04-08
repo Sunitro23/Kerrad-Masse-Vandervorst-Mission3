@@ -1,4 +1,5 @@
 <?php
+echo '<link href="newcss.css" rel="stylesheet">';
 session_start();
 if(isset($_SESSION['username'])){
     echo '<h3>Connecte en tant que '.$_SESSION['username'].'</h3>';
