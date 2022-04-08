@@ -1,15 +1,17 @@
 <?php
 
-function getTri($connect, $type, $ville) {
-    $requete = "SELECT * FROM bien INNER JOIN image ON bien.id = image.idbien WHERE 1=1 ";
+function getTri($connect, $type, $ville,$jardin) {
+    $requete = "SELECT * FROM bien JOIN image ON bien.id = image.idbien WHERE numImage=1 ";
     
     if ($type != 0) {$requete .= " AND idtype = :idtype";}
     if ($ville != "0"){$requete .= " AND ville = :ville";}
+    if ($jardin) {$requete .= " AND jardin = :jardin";}
     
     $query = $connect->prepare($requete);
     
-    if ($type != 0) {$bv1 = $query->bindValue(':idtype', $type, PDO::PARAM_STR);}
-    if ($ville != "0") {$bv2 = $query->bindValue(':ville', $ville, PDO::PARAM_STR);}
+    if ($type != 0) {$query->bindValue(':idtype', $type, PDO::PARAM_STR);}
+    if ($ville != "0") {$query->bindValue(':ville', $ville, PDO::PARAM_STR);}
+    if ($jardin) {$query->bindValue(':jardin',1, PDO::PARAM_INT);}
     
     $execute = $query->execute();
     $LesBiens = $query->fetchAll();
@@ -39,5 +41,5 @@ function getSelectVille($connect) {
     foreach ($LesVilles as $uneVille) {
         echo'<option value ="' . $uneVille['ville'] . '">' . $uneVille['ville'] . '</option>';
     }
-    echo '</select>';
+    echo '</select><br>';
 }
