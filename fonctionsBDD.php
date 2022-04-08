@@ -1,18 +1,21 @@
 <?php
 
-function getTri($connect, $type, $ville,$jardin) {
+function getTri($connect, $type, $ville,$jardin,$prixmin, $prixmax) {
     $requete = "SELECT * FROM bien JOIN image ON bien.id = image.idbien WHERE numImage=1 ";
     
     if ($type != 0) {$requete .= " AND idtype = :idtype";}
     if ($ville != "0"){$requete .= " AND ville = :ville";}
-    if ($jardin) {$requete .= " AND jardin = :jardin";}
+    if ($jardin) {$requete .= " AND jardin = 1";}
+    if ($prixmin != null && $prixmax == null) {$requete .= " AND prix > :prixmin";}
+    if ($prixmax != null && $prixmin == null) {$requete .= " AND prix < :prixmax";}
+    if ($prixmax !=null && $prixmin != null) {$requete .= " AND prix BETWEEN :prixmin AND :prixmax";}
     
     $query = $connect->prepare($requete);
     
     if ($type != 0) {$query->bindValue(':idtype', $type, PDO::PARAM_STR);}
     if ($ville != "0") {$query->bindValue(':ville', $ville, PDO::PARAM_STR);}
-    if ($jardin) {$query->bindValue(':jardin',1, PDO::PARAM_INT);}
-    
+    if ($prixmin != 0) {$query->bindValue(':prixmin', $prixmin, PDO::PARAM_STR);}
+    if ($prixmax != 0) {$query->bindValue(':prixmax', $prixmax, PDO::PARAM_STR);}
     $execute = $query->execute();
     $LesBiens = $query->fetchAll();
     return $LesBiens;
