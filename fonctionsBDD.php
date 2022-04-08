@@ -1,5 +1,4 @@
 <?php
-
 function getTri($connect, $type, $ville,$jardin,$prixmin, $prixmax) {
     $requete = "SELECT * FROM bien JOIN image ON bien.id = image.idbien WHERE numImage=1 ";
     
@@ -44,5 +43,30 @@ function getSelectVille($connect) {
     foreach ($LesVilles as $uneVille) {
         echo'<option value ="' . $uneVille['ville'] . '">' . $uneVille['ville'] . '</option>';
     }
-    echo '</select><br>';
+    echo '</select>';
+}
+
+function getInfoBien($connect, $idbien) {
+    $query = $connect->prepare('SELECT DISTINCT * FROM bien JOIN type ON type.idtype = bien.idtype WHERE bien.id = :idbien');
+    $bv1 = $query->bindValue(':idbien', $idbien, PDO::PARAM_STR);
+    $execute = $query->execute();
+    $LeBien = $query->fetch();
+    return $LeBien;
+}
+
+function getImgBien($connect, $idbien) {
+    $query = $connect->prepare('SELECT * FROM image WHERE image.idbien = :idbien');
+    $bv1 = $query->bindValue(':idbien', $idbien, PDO::PARAM_STR);
+    $execute = $query->execute();
+    $Image = $query->fetchAll();
+    return $Image;
+}
+
+function getMenu() {
+    echo '<header><h2>GILBERT IMMO</h2>
+        <ul class="navMenu">
+            <a href="index.html"> Accueil </a>
+            <a href="menus/menu_apparts.html"> Rechercher un bien </a>
+            <a href="menus/menu_apparts.html"> Contact </a>
+        </ul></header>';
 }
