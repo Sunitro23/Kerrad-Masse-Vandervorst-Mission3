@@ -10,3 +10,4 @@ if(isset($_SESSION['username'])){
 else{
     echo '<a href="pageConnexion.html">Se connecter</a>';
 }
+echo '<a href="tests/testgetTRi.php">Accèder aux biens</a>';
