@@ -1,4 +1,4 @@
 <?php
 include '../connexionbdd.php';
 
-var_dump($connect);
+var_dump(connect());
