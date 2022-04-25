@@ -5,26 +5,27 @@ include '../fonctionsBDD.php';
 $connect = connect();
 $LeBien = getInfoBien($connect, 1);
 $Image = getImgBien($connect, 1);
-echo '<!DOCTYPE html><link href="../newcss.css" rel="stylesheet">
+echo '<!DOCTYPE html><html><head><link href="../newcss.css" rel="stylesheet">
     
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-<script type="text/javascript">
-   $(function(){
-      setInterval(function(){
-         $(".slideshow ul").animate({marginLeft:-600},800,function(){
-            $(this).css({marginLeft:0}).find("li:last").after($(this).find("li:first"));
-         })
-      }, 3500);
-   });
-</script>';
+</head>';
+
 getMenu();
-echo '<div class="slideshow">
-<ul>';
+
+echo '<body>
+    <div class="slideshow-container">';
 foreach ($Image as $uneImage) {
-    echo '<li><img src="..' . $uneImage['chemin'] . '" alt="" width="600" height="600"></li>';
+    echo '
+    <div class="mySlides fade">
+        <div class="numbertext">'.$uneImage['numImage'].' / 5</div>
+        <img src="..' . $uneImage['chemin'] . '" alt="" style="width:100%">
+    </div>';
 }
 
-echo '</div>
+echo '
+<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+<a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+
 <div class="detailbien">
 <h3>Caractéristiques du bien</h3>
 <h3>Nombre de pièces : ' . $LeBien['nbpieces'] . '</h3>
@@ -37,5 +38,7 @@ if ($LeBien['jardin']) {
 }
 echo '<h3>Type : ' . $LeBien['libelle'] . '</h3>
 <p></p>
-</div>';
+</div>
+<script type="text/javascript" src="../js/carroussel.js"></script>
+</body></html>';
 
