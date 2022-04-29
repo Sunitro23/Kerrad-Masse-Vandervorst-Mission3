@@ -5,13 +5,15 @@ include '../fonctionsBDD.php';
 $connect = connect();
 $LeBien = getInfoBien($connect, 1);
 $Image = getImgBien($connect, 1);
-echo '<!DOCTYPE html><html><head><link href="../newcss.css" rel="stylesheet">
-    
-</head>';
+echo '<!DOCTYPE html><html><head><link href="../newcss.css" rel="stylesheet"><script src="../js/html2pdf.bundle.min.js"></script><script>function generatePdf() {const element = document.getElementById("pdf");html2pdf().from(element).save();}</script><body id="pdf">
+</head><header><h2>GILBERT IMMO</h2>
+        <ul class="navMenu">
+            <a href="../index.php"> Accueil </a>
+            <a href="../tests/testgetTRi.php"> Rechercher un bien </a>
+            <a href="../contact.php"> Contact </a>
+        </ul></header>';
 
-getMenu();
-
-echo '<body>
+echo '<body id="pdf">
     <div class="slideshow-container">';
 foreach ($Image as $uneImage) {
     echo '
@@ -40,5 +42,6 @@ echo '<h3>Type : ' . $LeBien['libelle'] . '</h3>
 <p></p>
 </div>
 <script type="text/javascript" src="../js/carroussel.js"></script>
-</body></html>';
+</body>
+<input type="button" onclick="generatePdf()" value="Télécharger au format pdf"></html>';
 
