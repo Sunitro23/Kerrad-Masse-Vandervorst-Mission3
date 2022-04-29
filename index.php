@@ -1,5 +1,5 @@
 <?php
-echo '<link href="newcss.css" rel="stylesheet">';
+echo '<link href="newcss.css" rel="stylesheet"><script src="js/html2pdf.bundle.min.js"></script><script>function generatePdf() {const element = document.getElementById("pdf");html2pdf().from(element).save();}</script><body id="pdf">';
 session_start();
 if(isset($_SESSION['username'])){
     echo '<h3>Connecte en tant que '.$_SESSION['username'].'</h3>';
@@ -10,4 +10,5 @@ if(isset($_SESSION['username'])){
 else{
     echo '<a href="pageConnexion.html">Se connecter</a>';
 }
-echo '<a href="tests/testgetTRi.php">Accèder aux biens</a>';
+echo '<a href="tests/testgetTRi.php">Accèder aux biens</a><br></body>
+<input type="button" onclick="generatePdf()" value="Télécharger au format pdf">';
