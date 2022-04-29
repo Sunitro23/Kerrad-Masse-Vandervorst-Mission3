@@ -1,6 +1,6 @@
 <?php
-function getTri($connect, $type, $ville,$jardin,$prixmin, $prixmax) {
-    $requete = "SELECT * FROM bien JOIN image ON bien.id = image.idbien WHERE numImage=1 ";
+function getTri($connect, $type, $ville,$jardin,$prixmin, $prixmax, $surfacemin, $piecemin) {
+    $requete = "SELECT * FROM bien JOIN image ON bien.id = image.idbien WHERE numImage=1";
     
     if ($type != 0) {$requete .= " AND idtype = :idtype";}
     if ($ville != "0"){$requete .= " AND ville = :ville";}
@@ -8,16 +8,21 @@ function getTri($connect, $type, $ville,$jardin,$prixmin, $prixmax) {
     if ($prixmin != null && $prixmax == null) {$requete .= " AND prix > :prixmin";}
     if ($prixmax != null && $prixmin == null) {$requete .= " AND prix < :prixmax";}
     if ($prixmax !=null && $prixmin != null) {$requete .= " AND prix BETWEEN :prixmin AND :prixmax";}
+    if ($surfacemin != 0) {$requete .= " AND superficie > :surfacemin";}
+    if ($piecemin != 0) {$requete .= " AND nbpieces > :piecemin";}
     
     $query = $connect->prepare($requete);
     
     if ($type != 0) {$query->bindValue(':idtype', $type, PDO::PARAM_STR);}
     if ($ville != "0") {$query->bindValue(':ville', $ville, PDO::PARAM_STR);}
-    if ($prixmin != 0) {$query->bindValue(':prixmin', $prixmin, PDO::PARAM_STR);}
-    if ($prixmax != 0) {$query->bindValue(':prixmax', $prixmax, PDO::PARAM_STR);}
+    if ($prixmin != null) {$query->bindValue(':prixmin', $prixmin, PDO::PARAM_INT);}
+    if ($prixmax != null) {$query->bindValue(':prixmax', $prixmax, PDO::PARAM_INT);}
+    if ($surfacemin != 0) {$query->bindValue(':surfacemin', $surfacemin, PDO::PARAM_INT);}
+    if ($piecemin != 0) {$query->bindValue(':piecemin', $piecemin, PDO::PARAM_INT);}
     $execute = $query->execute();
     $LesBiens = $query->fetchAll();
     return $LesBiens;
+
 }
 
 function getSelectType($connect) {
@@ -62,11 +67,3 @@ function getImgBien($connect, $idbien) {
     return $Image;
 }
 
-function getMenu() {
-    echo '<header><h2>GILBERT IMMO</h2>
-        <ul class="navMenu">
-            <a href="index.html"> Accueil </a>
-            <a href="menus/menu_apparts.html"> Rechercher un bien </a>
-            <a href="menus/menu_apparts.html"> Contact </a>
-        </ul></header>';
-}
