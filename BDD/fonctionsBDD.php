@@ -16,7 +16,6 @@ function login($connect, $password, $username) {
     $resultats = $query->fetchAll();
     foreach ($resultats as $resultat) {
         if ($resultat['username'] == $username && password_verify($password, $resultat['password'])) {
-            session_start();
             $_SESSION['username'] = $username;
             $id_session = session_id();
             echo '<meta http-equiv="refresh" content="1; url=index.php"/>';
@@ -27,7 +26,6 @@ function login($connect, $password, $username) {
 }
 
 function disconnect() {
-    session_start();
     session_unset();
     echo 'nigga';
     Header('Location: ' . $_SERVER['PHP_SELF']);
@@ -122,7 +120,7 @@ function getInfoBien($connect, $idbien) {
     $query = $connect->prepare('SELECT DISTINCT * FROM bien JOIN type ON type.idtype = bien.idtype WHERE bien.id = :idbien');
     $bv1 = $query->bindValue(':idbien', $idbien, PDO::PARAM_STR);
     $execute = $query->execute();
-    return $query->fetchAll();
+    return $query->fetch();
 }
 
 function getImgBien($connect, $idbien) {

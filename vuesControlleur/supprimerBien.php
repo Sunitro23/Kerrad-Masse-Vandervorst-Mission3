@@ -3,7 +3,6 @@
 include_once '../inc/header.inc';
 include_once '../BDD/fonctionsBDD.php';
 if (isset($_SESSION['username'])) {
-    session_start();
     echo'
         <form action="#" method="POST">
         <label for="idSuppr">ID du bien à supprimer :</label>

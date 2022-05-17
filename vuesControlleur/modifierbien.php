@@ -1,7 +1,6 @@
 <?php
 include_once '../inc/header.inc';
 include_once '../BDD/fonctionsBDD.php';
-session_start();
 if (isset($_SESSION['username'])) {
     echo '<form action="#" method="post">';
     include '../inc/form.inc';

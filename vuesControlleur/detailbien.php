@@ -4,7 +4,7 @@ include_once '../inc/header.inc';
 $connect = connect();
 $LeBien = getInfoBien($connect, 4);
 $Image = getImgBien($connect, 4);
-echo '<div class="slideshow-container">';
+echo '<div class="slideshow-container"><script>function generatePdf() {const element = document.getElementById("pdf");html2pdf().from(element).save();}</script> ';
 
 foreach ($Image as $uneImage) {
     echo '
@@ -13,6 +13,7 @@ foreach ($Image as $uneImage) {
         <img src="..' . $uneImage['chemin'] . '" alt="" style="width:100%">
     </div>';
 }
+echo $uneImage['chemin'];
 ?>
 
 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>

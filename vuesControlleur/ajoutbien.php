@@ -1,14 +1,21 @@
 <?php
+
 include_once '../inc/header.inc';
 include_once '../BDD/fonctionsBDD.php';
-session_start();
 if (isset($_SESSION['username'])) {
     echo '<form action="#" method="post">';
     include_once '../inc/form.inc';
     echo '<input type="submit" value="Valider"></form>';
-    if (isset($_POST['idType'])) {
+    if (isset($_POST['jardin'])) {
+        echo 'true';
+    }
+    if (isset($_POST['idType']) && $_POST['prix'] && $rue = $_POST['rue'] && $ville = $_POST['ville'] && $nbpieces = $_POST['nbpieces'] && $nbetages = $_POST['nbetages'] && $nbappartements = $_POST['nbappartements'] && $_POST['superficie']) {
         $idType = $_POST['idType'];
-        $jardin = $_POST['jardin'];
+        if (isset($_POST['jardin'])) {
+            $jardin = 1;
+        } else {
+            $jardin = 0;
+        }
         $prix = $_POST['prix'];
         $rue = $_POST['rue'];
         $ville = $_POST['ville'];
@@ -17,17 +24,7 @@ if (isset($_SESSION['username'])) {
         $nbappartements = $_POST['nbappartements'];
         $superficie = $_POST['superficie'];
 
-        if ($jardin == "jardin") {
-            $jardin = 1;
-        } else {
-            $jardin = 0;
-        }
-
-        try {
-            $connect = new PDO('mysql:host=localhost;dbname=bdd;charset=utf8', 'root', '');
-        } catch (Exception $ex) {
-            echo 'Connexion �chou�e : ' . $e->getMessage();
-        }
+        $connect = connect();
         $inserer = $connect->prepare('INSERT INTO bien(idtype, jardin, prix, rue, ville, nbpieces, nbetages, nbappartements, superficie)VALUES(:idType,:jardin,:prix,:rue,:ville,:nbpieces,:nbetages,:nbappartements,:superficie)');
         $bind1 = $inserer->bindValue(':idType', $idType, PDO::PARAM_INT);
         $bind2 = $inserer->bindValue(':jardin', $jardin, PDO::PARAM_INT);
@@ -46,7 +43,7 @@ if (isset($_SESSION['username'])) {
             echo "<h2>Erreur</h2>";
         }
     }
-}else{
-    echo 'Error';
+} else {
+    echo '<h2>Veuillez renrter toutes les informations<h2> ';
 }
 include_once '../inc/footer.inc';
