@@ -27,7 +27,6 @@ function login($connect, $password, $username) {
 
 function disconnect() {
     session_unset();
-    echo 'nigga';
     Header('Location: ' . $_SERVER['PHP_SELF']);
 }
 
